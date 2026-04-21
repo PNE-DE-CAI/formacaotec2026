@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Formação Tecnologia · SEDUC-SP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a2f6c 0%, #041a3a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #212121;
+        }
+
+        :root {
+            --azul-escuro: #0a2f6c;
+            --azul-claro: #eef3fb;
+            --vermelho: #d32f2f;
+            --branco: #ffffff;
+            --preto: #212121;
+            --cinza-borda: #e0e4e9;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #0f1a24;
+            border-radius: 48px;
+            padding: 20px;
+            box-shadow: 0 30px 35px rgba(0,0,0,0.5), inset 0 1px 4px rgba(255,255,200,0.1);
+            border: 1px solid var(--vermelho);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0a2f6ccc;
+            backdrop-filter: blur(4px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area img {
+            max-height: 50px;
+            width: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .logo-area span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffec9e;
+        }
+
+        .title-badge {
+            background: var(--vermelho);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 3rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--branco);
+            border-left: 6px solid var(--vermelho);
+            padding-left: 1rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1rem 0 0.8rem;
+            color: var(--branco);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--branco);
+            border-radius: 24px;
+            padding: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid var(--cinza-borda);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--azul-escuro);
+        }
+
+        .card h4 {
+            color: var(--azul-escuro);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-link {
+            background: linear-gradient(135deg, #0a2f6c, #052050);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s linear;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: 0.8rem;
+        }
+
+        .btn-link:hover {
+            background: var(--vermelho);
+            transform: translateY(-2px);
+        }
+
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            background: #1a2a3a;
+            border-radius: 32px;
+            padding: 1rem;
+        }
+
+        .agenda-col {
+            background: #0f1a24;
+            border-radius: 24px;
+            padding: 1rem;
+        }
+
+        .agenda-col h3 {
+            color: #ffec9e;
+            border-bottom: 2px solid var(--vermelho);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .agenda-item {
+            display: flex;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+            align-items: baseline;
+        }
+
+        .time {
+            font-weight: 700;
+            color: var(--vermelho);
+            min-width: 70px;
+        }
+
+        .desc {
+            color: #ddd;
+        }
+
+        .info-box {
+            background: var(--azul-claro);
+            border-left: 5px solid var(--vermelho);
+            padding: 1rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box p {
+            color: var(--preto);
+            line-height: 1.4;
+        }
+
+        .comparativo-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #f8f9fa;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .comparativo-table th, .comparativo-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .comparativo-table th {
+            background: var(--azul-escuro);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #b4c8e0;
+            font-size: 0.8rem;
+            border-top: 1px solid #2c4c6e;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 12px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo-area">
+            <img src="https://i.ibb.co/0p01LzxB/logo3de.jpg" alt="Logo SEDUC">
+            <span>Planejamento Escolar · Tecnologia</span>
+        </div>
+        <div class="title-badge">🤖 Formação 2026 · 22/04</div>
+    </div>
+
+    <div class="info-box">
+        <p><strong>🎯 Sobre a formação:</strong> Encontro voltado para professores de Tecnologia, abordando novidades da plataforma Start by Alura, planilhas, formulários, inteligência artificial e programação em Python. O objetivo é integrar recursos digitais à prática pedagógica, promovendo o uso crítico e criativo da tecnologia em sala de aula.</p>
+    </div>
+
+    <!-- Agenda -->
+    <h2>📅 Agenda do Dia (22/04)</h2>
+    <div class="agenda-grid">
+        <div class="agenda-col">
+            <h3>🌅 Manhã</h3>
+            <div class="agenda-item"><span class="time">09h00</span><span class="desc">Acolhimento</span></div>
+            <div class="agenda-item"><span class="time">09h15</span><span class="desc">Novidades Start & Mão na Massa</span></div>
+            <div class="agenda-item"><span class="time">09h50</span><span class="desc">Planilhas & Mão na Massa</span></div>
+            <div class="agenda-item"><span class="time">10h15</span><span class="desc">Formulários</span></div>
+            <div class="agenda-item"><span class="time">10h45</span><span class="desc">Inteligência Artificial</span></div>
+            <div class="agenda-item"><span class="time">11h10</span><span class="desc">Mão na massa</span></div>
+            <div class="agenda-item"><span class="time">11h35</span><span class="desc">Python</span></div>
+            <div class="agenda-item"><span class="time">11h55</span><span class="desc">Encerramento</span></div>
+        </div>
+        <div class="agenda-col">
+            <h3>📌 Combinados</h3>
+            <div class="agenda-item"><span class="time">✔️</span><span class="desc">Esteja presente</span></div>
+            <div class="agenda-item"><span class="time">💬</span><span class="desc">Participe ativamente</span></div>
+            <div class="agenda-item"><span class="time">❓</span><span class="desc">Tire suas dúvidas</span></div>
+            <div class="agenda-item"><span class="time">🤝</span><span class="desc">Valorize o tempo juntos</span></div>
+            <div class="agenda-item"><span class="time">🚀</span><span class="desc">Mergulhe nas trocas</span></div>
+        </div>
+    </div>
+
+    <!-- Novidades Start -->
+    <h2>📌 Novidades Start by Alura</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-chalkboard-teacher"></i> Material do Professor</h4>
+            <p>Conteúdo exclusivo para docentes, com Planejamento de Aula no AVA EFAPE. Unidades: "Introdução à computação" e "Lógica de programação".</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-user-graduate"></i> Conteúdo do Estudante</h4>
+            <p>Unidades interativas: edição de texto e lógica de programação com jogos, arte e criatividade. Desafios no StartLab.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-robot"></i> IA na Start</h4>
+            <p>Unidades com IA generativa: "Mídias digitais: sua apresentação com autorIA". Ferramentas como Gemini e NotebookLM.</p>
+        </div>
+    </div>
+
+    <!-- Planilhas -->
+    <h2>📊 Planilhas – Gestão e Análise de Dados</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-table"></i> Conceitos básicos</h4>
+            <p>Célula, coluna, linha, intervalo. Boas práticas: cabeçalhos claros, uma informação por célula, padronização.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-calculator"></i> Funções vs. Fórmulas</h4>
+            <p><strong>Função SOMA:</strong> =SOMA(A1:A10) · <strong>MÉDIA:</strong> =MÉDIA(B1:B3) · <strong>SE:</strong> condicional "se... então... senão".</p>
+            <a href="https://bit.ly/3P0M4YI" target="_blank" class="btn-link"><i class="fas fa-chart-line"></i> Prática – Planilha interativa</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-paint-bucket"></i> Formatação condicional</h4>
+            <p>Alerta visual: pinte células de vermelho se "Recuperação", verde se "Aprovado".</p>
+        </div>
+    </div>
+
+    <!-- Formulários -->
+    <h2>📝 Formulários – Coleta de Dados</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-google"></i> Google Forms</h4>
+            <p>Crie formulários, envie links e visualize respostas automaticamente em uma planilha. Use perguntas fechadas para facilitar a análise.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-chart-pie"></i> Análise qualitativa com IA</h4>
+            <p>Use IA para categorizar respostas abertas, identificar sentimentos e criar nuvens de palavras. Exemplo de prompt: "Analise 50 respostas e crie uma tabela com os itens mais citados".</p>
+        </div>
+    </div>
+
+    <!-- Inteligência Artificial -->
+    <h2>🧠 Inteligência Artificial</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-exclamation-triangle"></i> Alucinações e Vieses</h4>
+            <p>IAs podem gerar respostas incoerentes (alucinações) ou reproduzir preconceitos (vieses). Sempre verifique informações em fontes confiáveis.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-tools"></i> Ferramentas sugeridas</h4>
+            <p><strong>Deep Research:</strong> atualização de conteúdos, levantamento bibliográfico.<br>
+            <strong>Gems:</strong> versões personalizadas do Gemini (planejador de aula, mentor de carreira).<br>
+            <strong>Aprendizado Guiado:</strong> tutor socrático que conduz o aluno ao conhecimento.<br>
+            <strong>NotebookLM:</strong> organize fontes, crie podcasts, analise textos complexos.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-brain"></i> IA na Start</h4>
+            <p>Unidades com IA generativa para produção de apresentações e mídias digitais.</p>
+        </div>
+    </div>
+
+    <!-- Python -->
+    <h2>🐍 Python – Programação no Google Colab</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-code"></i> Google Colab</h4>
+            <p>Plataforma online para programar em Python sem instalação. Células de código/texto, execução na nuvem, histórico de revisões.</p>
+            <a href="https://colab.new" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Acessar Colab</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-car"></i> Desafio: Planejamento de Viagem</h4>
+            <p>Calcular tempo de viagem com base na distância (408 km) e velocidade média. Converter horas e minutos.</p>
+            <a href="https://bit.ly/colab-desafio" target="_blank" class="btn-link"><i class="fas fa-laptop-code"></i> Resolver desafios</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-lightbulb"></i> Lógica de Programação</h4>
+            <p>Variáveis, entrada de dados, operações aritméticas, estruturas condicionais. A IA pode ajudar, mas o aluno precisa entender os conceitos para formular o prompt.</p>
+        </div>
+    </div>
+
+    <!-- Mão na Massa – Interações com links -->
+    <h2>✋ Mão na Massa – Interações</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-rocket"></i> Interação 01 · Novidades Start</h4>
+            <p>Explore as novidades da plataforma Start by Alura e os materiais de apoio para o 1º bimestre.</p>
+            <a href="https://pne-de-cai.github.io/formacaotecstaralura/" target="_blank" class="btn-link"><i class="fas fa-play"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-table"></i> Interação 02 · Planilhas</h4>
+            <p>Prática com funções, fórmulas e formatação condicional no Google Planilhas.</p>
+            <a href="https://pne-de-cai.github.io/formacaotecplanilhasgoogle/" target="_blank" class="btn-link"><i class="fas fa-chart-simple"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-google"></i> Interação 03 · Formulários</h4>
+            <p>Criação de formulários para coleta de dados e integração com planilhas.</p>
+            <a href="https://pne-de-cai.github.io/formacaotecformulariogoogle/" target="_blank" class="btn-link"><i class="fas fa-edit"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-brain"></i> Interação 04 · Inteligência Artificial</h4>
+            <p>Conceitos de IA, alucinações, vieses e ferramentas educacionais.</p>
+            <a href="https://pne-de-cai.github.io/formacaotecinteliarti/" target="_blank" class="btn-link"><i class="fas fa-microchip"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-robot"></i> Interação 05 · IA na Start</h4>
+            <p>Como integrar a IA generativa às aulas de Tecnologia.</p>
+            <a href="https://pne-de-cai.github.io/formacaotecinteliarti2/" target="_blank" class="btn-link"><i class="fas fa-chalkboard"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-hands-helping"></i> Interação 06 · Mão na massa</h4>
+            <p>Atividade prática com IA – roteiro para uso crítico da tecnologia.</p>
+            <a href="https://pne-de-cai.github.io/maonamassatec01/" target="_blank" class="btn-link"><i class="fas fa-laptop"></i> Acessar</a>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-code"></i> Interação 07 · Python</h4>
+            <p>Desafios de programação no Google Colab.</p>
+            <a href="https://pne-de-cai.github.io/formacaopythontec/" target="_blank" class="btn-link"><i class="fab fa-python"></i> Acessar</a>
+        </div>
+    </div>
+
+    <!-- Materiais de apoio -->
+    <h2>📚 Materiais de apoio</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4><i class="fas fa-file-pdf"></i> PDF da formação</h4>
+            <a href="https://drive.google.com/file/d/1Xh4Zbp0HrQ2E7XiNz6nmal6opsco_gxo/view?usp=drive_link" target="_blank" class="btn-link"><i class="fas fa-download"></i> Baixar PDF</a>
+            <p class="info-box" style="margin-top:0.5rem; font-size:0.8rem;">Use e adapte da melhor forma para a sua UE.</p>
+        </div>
+        <div class="card">
+            <h4><i class="fas fa-slideshare"></i> Slide editável</h4>
+            <a href="https://docs.google.com/presentation/d/14scdPrbf15jSQ1zG2XVXpbVc0-6gFh2Oo_Un36N_2Wo/edit?usp=sharing" target="_blank" class="btn-link"><i class="fas fa-edit"></i> Acessar slides</a>
+            <p class="info-box" style="margin-top:0.5rem; font-size:0.8rem;">Use e adapte da melhor forma para a sua UE.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Formação Presencial 2026 – Tecnologia · Planejamento Escolar</p>
+        <p>Todos os recursos e links estão disponíveis para uso pedagógico.</p>
+    </footer>
+</div>
+</body>
+</html>
